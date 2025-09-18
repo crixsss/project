@@ -296,6 +296,10 @@ footer p {
 
 /* Tablet e Celular (Telas pequenas) */
 @media (max-width: 768px) {
+     body {
+        padding-top: 100px; 
+    }
+    
     .hamburger {
         display: flex; /* Mostra o menu hambúrguer */
     }
