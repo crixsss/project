@@ -387,3 +387,8 @@ footer p {
         font-size: 0.9em;
     }
 }
+
+    .nav.active {
+    transform: translateX(0);
+    visibility: visible;
+}
