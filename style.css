@@ -272,11 +272,11 @@ footer p {
 }
 
 /* Responsive Design */
-@media (min-width: 768px) {
-    .hero .container {
-        flex-direction: row;
-        justify-content: space-between;
+@media (min-width: 999px) {
+    .logo {
+        position: static;
     }
+}
 
     .hero-content {
         text-align: left;
