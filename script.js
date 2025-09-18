@@ -1,11 +1,7 @@
-<script>
-    const hamburger = document.querySelector('.hamburger');
-    // AJUSTE AQUI: troque '.nav-links' por 'nav ul'
-    const navUl = document.querySelector('nav ul');
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener('click', () => {
-        // AJUSTE AQUI: use a nova variável navUl
-        navUl.classList.toggle('open');
-        hamburger.classList.toggle('active');
-    });
-</script>
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('active');
+});
