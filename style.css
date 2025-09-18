@@ -149,7 +149,7 @@ nav ul li a.active {
 .hero {
     background-color: #dc3545;
     color: #fff;
-    padding: 140px 0 80px; /* Aumentado o padding-top para compensar o header fixo */
+    padding: 60px 0 px; /* Aumentado o padding-top para compensar o header fixo */
     text-align: center;
 }
 
