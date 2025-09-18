@@ -23,7 +23,7 @@ body {
 header {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed; /* Alterado para fixo */
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
@@ -117,7 +117,7 @@ nav ul li a.active {
 
 /* Hamburger Menu */
 .hamburger {
-    display: none;
+    display: none; /* Escondido por padrão, aparece em telas pequenas */
     flex-direction: column;
     cursor: pointer;
     gap: 4px;
@@ -132,6 +132,7 @@ nav ul li a.active {
     transition: all 0.3s;
 }
 
+/* Animação do Hambúrguer para X */
 .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -148,7 +149,7 @@ nav ul li a.active {
 .hero {
     background-color: #dc3545;
     color: #fff;
-    padding: 120px 0 80px; /* Ajustado padding-top pelo header fixo */
+    padding: 140px 0 80px; /* Aumentado o padding-top para compensar o header fixo */
     text-align: center;
 }
 
@@ -161,7 +162,6 @@ nav ul li a.active {
 
 .hero-content {
     max-width: 600px;
-    text-align: left;
 }
 
 .hero-content h2 {
@@ -222,7 +222,7 @@ nav ul li a.active {
 .content-section {
     padding: 60px 0;
     background-color: #fff;
-    margin-bottom: 20px;
+    margin: 20px 0; /* Adicionado margin top/bottom */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -271,12 +271,16 @@ footer p {
     font-size: 0.9em;
 }
 
-/* Responsive Design */
-@media (min-width: 999px) {
-    .logo {
-        position: static;
+/* =================================== */
+/* RESPONSIVE DESIGN          */
+/* =================================== */
+
+/* Desktop (Telas grandes) */
+@media (min-width: 769px) {
+    .hero .container {
+        flex-direction: row;
+        text-align: left;
     }
-}
 
     .hero-content {
         text-align: left;
@@ -287,80 +291,47 @@ footer p {
         flex: 1;
         text-align: right;
     }
+}
 
-    .hero-content h2 {
-        font-size: 3.5em;
+/* Tablet e Celular (Telas pequenas) */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Mostra o menu hambúrguer */
     }
 
     nav ul {
         display: flex;
-    }
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 60px; /* abaixo do header */
-    left: -100%;
-    width: 100%;
-    flex-direction: column;
-    background-color: #fff; /* cor do menu */
-    transition: 0.3s;
-    padding: 10px 0;
-    z-index: 999;
-  }
-
-  .nav-links.open {
-    left: 0;
-  }
-
-  .nav-links li {
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  .nav-links li a {
-    color: #333;
-    font-size: 1.1em;
-  }
-}
-    .brand {
-        margin-bottom: 10px;
-    }
-
-    nav ul {
         flex-direction: column;
-        width: 100%;
         position: absolute;
-        top: 100%;
-        left: -100%;
-        background-color: #0054a6;
-        transition: 0.3s;
+        top: 100%; /* Posiciona logo abaixo do header */
+        left: 0;
+        background-color: #fff;
+        width: 100%;
+        
+        /* Esconde o menu fora da tela */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        
+        padding: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Regra para mostrar o menu quando o hambúrguer estiver ativo */
+    nav ul.open {
+        transform: translateX(0);
     }
 
     nav ul li {
-        margin: 0 0 5px 0;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
     }
 
     nav ul li a {
-        display: block;
-        padding: 8px 10px;
-        color: #fff;
-        font-weight: 500;
+        color: #333;
+        font-size: 1.1em;
     }
-
-    nav ul li a:hover {
-        background-color: #dc3545;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
+    
     .hero-content {
         text-align: center;
     }
@@ -368,14 +339,21 @@ footer p {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
 
     .hero-buttons a {
         width: 80%;
+        text-align: center;
     }
 }
 
+/* Celular (Telas muito pequenas) */
 @media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 2.2em;
+    }
+
     .content-section h2 {
         font-size: 1.8em;
     }
@@ -386,9 +364,4 @@ footer p {
     .content-section ul li {
         font-size: 0.9em;
     }
-}
-
-    .nav.active {
-    transform: translateX(0);
-    visibility: visible;
 }
